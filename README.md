@@ -1,3 +1,3 @@
-# cldemo-vagrant-ts
+# cldemo-provision-ts
 
-Customer reference topology with OOB mgmt server being the NetQ Telemetry Server.
+Provisioning the OOB Management Server in Cumulus Customer Reference Topology where the server is NetQ Telemetry Server.
