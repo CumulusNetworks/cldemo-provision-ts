@@ -1,0 +1,25 @@
+# networking
+ravello: true
+wbench_hostname: 'oob-mgmt-server'
+wbench_user: 'cumulus'
+wbench_passwd: '$6$FGWDYwO9$VYHJSnnajoVNfOofL1ULWeG74fBf7/I5h.Gnm4meL1fG9Udw9JlAThqGtlG8JwHY7C4yOBEVJCWKDQ1LbE/AS1'
+wbench_eth1_network: '192.168.0.0'
+wbench_eth1_ip: '192.168.0.254'
+wbench_eth1_mask: '255.255.255.0'
+
+wbench_dhcp_range_start: '192.168.0.100'
+wbench_dhcp_range_end: '192.168.0.200'
+
+dns_search1: 'lab.local'
+dns_search2: 'cwb.cumulusnetworks.com'
+dns_server: '8.8.8.8'
+
+ntp_server: '1.cumulusnetworks.pool.ntp.org'
+
+wbench_hosts: {}
+cldemo_apt_server: 'cldemo.cumulusnetworks.com'
+ubuntu_apt_server: 'archive.ubuntu.com'
+
+do_ztp: false
+ztp_data: ""
+create_key: false

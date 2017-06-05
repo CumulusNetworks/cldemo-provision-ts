@@ -1,0 +1,12 @@
+- name: add hosts entries
+  template: src=hosts.j2 dest=/etc/hosts
+
+- name: set hostname
+  hostname:  name={{ wbench_hostname }}
+
+- name: add iptables NAT statement to rc.local
+  template: src=rc.local.j2 dest=/etc/rc.local 
+
+- name: run rc.local to start nat forwarding
+  become: yes
+  command: /bin/bash /etc/rc.local
