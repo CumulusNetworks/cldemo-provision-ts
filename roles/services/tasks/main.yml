@@ -2,8 +2,8 @@
   apt: name={{item}} state=present
   with_items:
     - isc-dhcp-server
-    - bind9utils
-    - bind9
+    # - bind9utils
+    # - bind9
 
 - name: configure dhcpd.conf
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf
