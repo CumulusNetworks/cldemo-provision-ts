@@ -1,9 +1,12 @@
+- name: copy over new bind9 required preferences
+  copy: src=20_prefer_cumulus dest=/etc/apt/preferences.d/20_prefer_cumulus
+
 - name: install service packages
   apt: name={{item}} state=present
   with_items:
     - isc-dhcp-server
-    # - bind9utils
-    # - bind9
+    - bind9utils
+    - bind9
 
 - name: configure dhcpd.conf
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf
@@ -17,29 +20,29 @@
   template: src=dhcpd.hosts.j2 dest=/etc/dhcp/dhcpd.hosts
   notify: restart dhcp
 
-# - name: update named.conf.locals bind file
-#   copy: src=named.conf.local dest=/etc/bind/named.conf.local
-#   notify: restart bind9
+- name: update named.conf.locals bind file
+  copy: src=named.conf.local dest=/etc/bind/named.conf.local
+  notify: restart bind9
 
-# - name: create bind9 zone directory
-#   file: path=/etc/bind/zones state=directory
-#   notify: restart bind9
+- name: create bind9 zone directory
+  file: path=/etc/bind/zones state=directory
+  notify: restart bind9
 
-# - name: install db.lab.local zone
-#   template: src=db.lab.local.j2 dest=/etc/bind/zones/db.lab.local
-#   notify: restart bind9
+- name: install db.lab.local zone
+  template: src=db.lab.local.j2 dest=/etc/bind/zones/db.lab.local
+  notify: restart bind9
 
-# - name: install reverse db.lab.local zone file
-#   template: src=db.0.168.192.in-addr.arpa.j2 dest=/etc/bind/zones/db.0.168.192.in-addr.arpa
-#   notify: restart bind9
+- name: install reverse db.lab.local zone file
+  template: src=db.0.168.192.in-addr.arpa.j2 dest=/etc/bind/zones/db.0.168.192.in-addr.arpa
+  notify: restart bind9
 
-# - name: set up bind forwarding
-#   template: src=named.conf.options.j2 dest=/etc/bind/named.conf.options
-#   notify: restart bind9
+- name: set up bind forwarding
+  template: src=named.conf.options.j2 dest=/etc/bind/named.conf.options
+  notify: restart bind9
 
-# - name: make wbench use itself as DNS resolver
-#   copy: src=resolv.conf dest=/etc/resolv.conf
-#   notify: restart bind9
+- name: make wbench use itself as DNS resolver
+  copy: src=resolv.conf dest=/etc/resolv.conf
+  notify: restart bind9
 
 - name: really restart bind
   meta: flush_handlers
