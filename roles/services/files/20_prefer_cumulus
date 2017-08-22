@@ -1,0 +1,15 @@
+Package: libbind9-90 libdns100 libisc* liblwres90
+Pin: release n=jessie
+Pin-Priority: 992
+
+Package: *
+Pin: release n=CumulusLinux-3
+Pin-Priority: 991
+
+Package: *
+Pin: release n=CumulusLinux-3-security-updates
+Pin-Priority: 991
+
+Package: *
+Pin: release n=CumulusLinux-3-updates
+Pin-Priority: 991

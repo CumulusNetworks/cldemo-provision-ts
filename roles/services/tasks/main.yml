@@ -1,9 +1,12 @@
+- name: copy over new bind9 required preferences
+  copy: src=20_prefer_cumulus dest=/etc/apt/preferences.d/20_prefer_cumulus
+
 - name: install service packages
   apt: name={{item}} state=present
   with_items:
     - isc-dhcp-server
-    - bind9utils=1:9.9.5.dfsg-9+deb8u10
-    - bind9=1:9.9.5.dfsg-9+deb8u10 
+    - bind9utils
+    - bind9
 
 - name: configure dhcpd.conf
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf
